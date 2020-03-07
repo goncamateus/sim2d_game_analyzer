@@ -8,6 +8,15 @@ version = "1.4.3"
 
 [[package]]
 category = "dev"
+description = "Disable App Nap on OS X 10.9"
+marker = "sys_platform == \"darwin\""
+name = "appnope"
+optional = false
+python-versions = "*"
+version = "0.1.0"
+
+[[package]]
+category = "dev"
 description = "Atomic file writes."
 marker = "sys_platform == \"win32\""
 name = "atomicwrites"
@@ -42,6 +51,14 @@ pycodestyle = ">=2.5.0"
 
 [[package]]
 category = "dev"
+description = "Specifications for callback functions passed in to an API"
+name = "backcall"
+optional = false
+python-versions = "*"
+version = "0.1.0"
+
+[[package]]
+category = "dev"
 description = "Validate configuration and produce human readable error messages."
 name = "cfgv"
 optional = false
@@ -67,6 +84,14 @@ version = "5.0.3"
 
 [package.extras]
 toml = ["toml"]
+
+[[package]]
+category = "dev"
+description = "Decorators for Humans"
+name = "decorator"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "4.4.2"
 
 [[package]]
 category = "dev"
@@ -116,6 +141,61 @@ version = "1.4.11"
 
 [package.extras]
 license = ["editdistance"]
+
+[[package]]
+category = "dev"
+description = "IPython: Productive Interactive Computing"
+name = "ipython"
+optional = false
+python-versions = ">=3.6"
+version = "7.13.0"
+
+[package.dependencies]
+appnope = "*"
+backcall = "*"
+colorama = "*"
+decorator = "*"
+jedi = ">=0.10"
+pexpect = "*"
+pickleshare = "*"
+prompt-toolkit = ">=2.0.0,<3.0.0 || >3.0.0,<3.0.1 || >3.0.1,<3.1.0"
+pygments = "*"
+setuptools = ">=18.5"
+traitlets = ">=4.2"
+
+[package.extras]
+all = ["numpy (>=1.14)", "testpath", "notebook", "nose (>=0.10.1)", "nbconvert", "requests", "ipywidgets", "qtconsole", "ipyparallel", "Sphinx (>=1.3)", "pygments", "nbformat", "ipykernel"]
+doc = ["Sphinx (>=1.3)"]
+kernel = ["ipykernel"]
+nbconvert = ["nbconvert"]
+nbformat = ["nbformat"]
+notebook = ["notebook", "ipywidgets"]
+parallel = ["ipyparallel"]
+qtconsole = ["qtconsole"]
+test = ["nose (>=0.10.1)", "requests", "testpath", "pygments", "nbformat", "ipykernel", "numpy (>=1.14)"]
+
+[[package]]
+category = "dev"
+description = "Vestigial utilities from IPython"
+name = "ipython-genutils"
+optional = false
+python-versions = "*"
+version = "0.2.0"
+
+[[package]]
+category = "dev"
+description = "An autocompletion tool for Python that can be used for text editors."
+name = "jedi"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.16.0"
+
+[package.dependencies]
+parso = ">=0.5.2"
+
+[package.extras]
+qa = ["flake8 (3.7.9)"]
+testing = ["colorama (0.4.1)", "docopt", "pytest (>=3.9.0,<5.0.0)"]
 
 [[package]]
 category = "dev"
@@ -179,6 +259,37 @@ test = ["pytest (>=4.0.2)", "pytest-xdist", "hypothesis (>=3.58)"]
 
 [[package]]
 category = "dev"
+description = "A Python Parser"
+name = "parso"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "0.6.2"
+
+[package.extras]
+testing = ["docopt", "pytest (>=3.0.7)"]
+
+[[package]]
+category = "dev"
+description = "Pexpect allows easy control of interactive console applications."
+marker = "sys_platform != \"win32\""
+name = "pexpect"
+optional = false
+python-versions = "*"
+version = "4.8.0"
+
+[package.dependencies]
+ptyprocess = ">=0.5"
+
+[[package]]
+category = "dev"
+description = "Tiny 'shelve'-like database with concurrency support"
+name = "pickleshare"
+optional = false
+python-versions = "*"
+version = "0.7.5"
+
+[[package]]
+category = "dev"
 description = "plugin and hook calling mechanisms for python"
 name = "pluggy"
 optional = false
@@ -206,6 +317,26 @@ virtualenv = ">=15.2"
 
 [[package]]
 category = "dev"
+description = "Library for building powerful interactive command lines in Python"
+name = "prompt-toolkit"
+optional = false
+python-versions = ">=3.6.1"
+version = "3.0.4"
+
+[package.dependencies]
+wcwidth = "*"
+
+[[package]]
+category = "dev"
+description = "Run a subprocess in a pseudo terminal"
+marker = "sys_platform != \"win32\""
+name = "ptyprocess"
+optional = false
+python-versions = "*"
+version = "0.6.0"
+
+[[package]]
+category = "dev"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
 name = "py"
 optional = false
@@ -227,6 +358,14 @@ name = "pyflakes"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "2.1.1"
+
+[[package]]
+category = "dev"
+description = "Pygments is a syntax highlighting package written in Python."
+name = "pygments"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "2.5.2"
 
 [[package]]
 category = "dev"
@@ -352,6 +491,22 @@ version = "0.10.0"
 
 [[package]]
 category = "dev"
+description = "Traitlets Python config system"
+name = "traitlets"
+optional = false
+python-versions = "*"
+version = "4.3.3"
+
+[package.dependencies]
+decorator = "*"
+ipython-genutils = "*"
+six = "*"
+
+[package.extras]
+test = ["pytest", "mock"]
+
+[[package]]
+category = "dev"
 description = "Virtual Python Environment builder"
 name = "virtualenv"
 optional = false
@@ -377,13 +532,17 @@ python-versions = "*"
 version = "0.1.8"
 
 [metadata]
-content-hash = "2b5556fe9e4d5cf9817ca4a30a7781e5e6141a1061b4f8ee6ebb205232dddba0"
+content-hash = "3afc11656fcc3bb33d0e2aedfa4c5317af5c7003bbb3e98419c61fff6d422786"
 python-versions = "3.8"
 
 [metadata.files]
 appdirs = [
     {file = "appdirs-1.4.3-py2.py3-none-any.whl", hash = "sha256:d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"},
     {file = "appdirs-1.4.3.tar.gz", hash = "sha256:9e5896d1372858f8dd3344faf4e5014d21849c756c8d5701f78f8a103b372d92"},
+]
+appnope = [
+    {file = "appnope-0.1.0-py2.py3-none-any.whl", hash = "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0"},
+    {file = "appnope-0.1.0.tar.gz", hash = "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"},
 ]
 atomicwrites = [
     {file = "atomicwrites-1.3.0-py2.py3-none-any.whl", hash = "sha256:03472c30eb2c5d1ba9227e4c2ca66ab8287fbfbbda3888aa93dc2e28fc6811b4"},
@@ -395,6 +554,10 @@ attrs = [
 ]
 autopep8 = [
     {file = "autopep8-1.5.tar.gz", hash = "sha256:0f592a0447acea0c2b0a9602be1e4e3d86db52badd2e3c84f0193bfd89fd3a43"},
+]
+backcall = [
+    {file = "backcall-0.1.0.tar.gz", hash = "sha256:38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4"},
+    {file = "backcall-0.1.0.zip", hash = "sha256:bbbf4b1e5cd2bdb08f915895b51081c041bac22394fdfcfdfbe9f14b77c08bf2"},
 ]
 cfgv = [
     {file = "cfgv-3.1.0-py2.py3-none-any.whl", hash = "sha256:1ccf53320421aeeb915275a196e23b3b8ae87dea8ac6698b1638001d4a486d53"},
@@ -437,6 +600,10 @@ coverage = [
     {file = "coverage-5.0.3-cp39-cp39m-win_amd64.whl", hash = "sha256:da93027835164b8223e8e5af2cf902a4c80ed93cb0909417234f4a9df3bcd9af"},
     {file = "coverage-5.0.3.tar.gz", hash = "sha256:77afca04240c40450c331fa796b3eab6f1e15c5ecf8bf2b8bee9706cd5452fef"},
 ]
+decorator = [
+    {file = "decorator-4.4.2-py2.py3-none-any.whl", hash = "sha256:41fa54c2a0cc4ba648be4fd43cff00aedf5b9465c9bf18d64325bc225f08f760"},
+    {file = "decorator-4.4.2.tar.gz", hash = "sha256:e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"},
+]
 distlib = [
     {file = "distlib-0.3.0.zip", hash = "sha256:2e166e231a26b36d6dfe35a48c4464346620f8645ed0ace01ee31822b288de21"},
 ]
@@ -455,6 +622,18 @@ flake8 = [
 identify = [
     {file = "identify-1.4.11-py2.py3-none-any.whl", hash = "sha256:1222b648251bdcb8deb240b294f450fbf704c7984e08baa92507e4ea10b436d5"},
     {file = "identify-1.4.11.tar.gz", hash = "sha256:d824ebe21f38325c771c41b08a95a761db1982f1fc0eee37c6c97df3f1636b96"},
+]
+ipython = [
+    {file = "ipython-7.13.0-py3-none-any.whl", hash = "sha256:eb8d075de37f678424527b5ef6ea23f7b80240ca031c2dd6de5879d687a65333"},
+    {file = "ipython-7.13.0.tar.gz", hash = "sha256:ca478e52ae1f88da0102360e57e528b92f3ae4316aabac80a2cd7f7ab2efb48a"},
+]
+ipython-genutils = [
+    {file = "ipython_genutils-0.2.0-py2.py3-none-any.whl", hash = "sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8"},
+    {file = "ipython_genutils-0.2.0.tar.gz", hash = "sha256:eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"},
+]
+jedi = [
+    {file = "jedi-0.16.0-py2.py3-none-any.whl", hash = "sha256:b4f4052551025c6b0b0b193b29a6ff7bdb74c52450631206c262aef9f7159ad2"},
+    {file = "jedi-0.16.0.tar.gz", hash = "sha256:d5c871cb9360b414f981e7072c52c33258d598305280fef91c6cae34739d65d5"},
 ]
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
@@ -510,6 +689,18 @@ pandas = [
     {file = "pandas-1.0.1-cp38-cp38-win_amd64.whl", hash = "sha256:5036d4009012a44aa3e50173e482b664c1fae36decd277c49e453463798eca4e"},
     {file = "pandas-1.0.1.tar.gz", hash = "sha256:3c07765308f091d81b6735d4f2242bb43c332cc3461cae60543df6b10967fe27"},
 ]
+parso = [
+    {file = "parso-0.6.2-py2.py3-none-any.whl", hash = "sha256:8515fc12cfca6ee3aa59138741fc5624d62340c97e401c74875769948d4f2995"},
+    {file = "parso-0.6.2.tar.gz", hash = "sha256:0c5659e0c6eba20636f99a04f469798dca8da279645ce5c387315b2c23912157"},
+]
+pexpect = [
+    {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
+    {file = "pexpect-4.8.0.tar.gz", hash = "sha256:fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"},
+]
+pickleshare = [
+    {file = "pickleshare-0.7.5-py2.py3-none-any.whl", hash = "sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56"},
+    {file = "pickleshare-0.7.5.tar.gz", hash = "sha256:87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca"},
+]
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
@@ -517,6 +708,14 @@ pluggy = [
 pre-commit = [
     {file = "pre_commit-2.1.1-py2.py3-none-any.whl", hash = "sha256:09ebe467f43ce24377f8c2f200fe3cd2570d328eb2ce0568c8e96ce19da45fa6"},
     {file = "pre_commit-2.1.1.tar.gz", hash = "sha256:f8d555e31e2051892c7f7b3ad9f620bd2c09271d87e9eedb2ad831737d6211eb"},
+]
+prompt-toolkit = [
+    {file = "prompt_toolkit-3.0.4-py3-none-any.whl", hash = "sha256:859e1b205b6cf6a51fa57fa34202e45365cf58f8338f0ee9f4e84a4165b37d5b"},
+    {file = "prompt_toolkit-3.0.4.tar.gz", hash = "sha256:ebe6b1b08c888b84c50d7f93dee21a09af39860144ff6130aadbd61ae8d29783"},
+]
+ptyprocess = [
+    {file = "ptyprocess-0.6.0-py2.py3-none-any.whl", hash = "sha256:d7cc528d76e76342423ca640335bd3633420dc1366f258cb31d05e865ef5ca1f"},
+    {file = "ptyprocess-0.6.0.tar.gz", hash = "sha256:923f299cc5ad920c68f2bc0bc98b75b9f838b93b599941a6b63ddbc2476394c0"},
 ]
 py = [
     {file = "py-1.8.1-py2.py3-none-any.whl", hash = "sha256:c20fdd83a5dbc0af9efd622bee9a5564e278f6380fffcacc43ba6f43db2813b0"},
@@ -529,6 +728,10 @@ pycodestyle = [
 pyflakes = [
     {file = "pyflakes-2.1.1-py2.py3-none-any.whl", hash = "sha256:17dbeb2e3f4d772725c777fabc446d5634d1038f234e77343108ce445ea69ce0"},
     {file = "pyflakes-2.1.1.tar.gz", hash = "sha256:d976835886f8c5b31d47970ed689944a0262b5f3afa00a5a7b4dc81e5449f8a2"},
+]
+pygments = [
+    {file = "Pygments-2.5.2-py2.py3-none-any.whl", hash = "sha256:2a3fe295e54a20164a9df49c75fa58526d3be48e14aceba6d6b1e8ac0bfd6f1b"},
+    {file = "Pygments-2.5.2.tar.gz", hash = "sha256:98c8aa5a9f778fcd1026a17361ddaf7330d1b7c62ae97c3bb0ae73e0b9b6b0fe"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.6-py2.py3-none-any.whl", hash = "sha256:c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"},
@@ -601,6 +804,10 @@ toml = [
     {file = "toml-0.10.0-py2.7.egg", hash = "sha256:f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"},
     {file = "toml-0.10.0-py2.py3-none-any.whl", hash = "sha256:235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e"},
     {file = "toml-0.10.0.tar.gz", hash = "sha256:229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c"},
+]
+traitlets = [
+    {file = "traitlets-4.3.3-py2.py3-none-any.whl", hash = "sha256:70b4c6a1d9019d7b4f6846832288f86998aa3b9207c6821f3578a6a6a467fe44"},
+    {file = "traitlets-4.3.3.tar.gz", hash = "sha256:d023ee369ddd2763310e4c3eae1ff649689440d4ae59d7485eb4cfbbe3e359f7"},
 ]
 virtualenv = [
     {file = "virtualenv-20.0.8-py2.py3-none-any.whl", hash = "sha256:0c04c7e8e0314470b4c2b43740ff68be1c62bb3fdef8309341ff1daea60d49d1"},
