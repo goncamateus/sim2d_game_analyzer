@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![sim2d_game_analyzer](https://github.com/goncamateus/sim2d_game_analyzer/workflows/sim2d_game_analyzer/badge.svg)
+![pytest](https://github.com/goncamateus/sim2d_game_analyzer/workflows/pytest/badge.svg)
 
 # sim2d_game_analyzer
 Games analyzer for Robocup Simulation 2d.
