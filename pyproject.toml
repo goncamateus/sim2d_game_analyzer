@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "sim2d_game_analyzer"
+version = "0.1.0"
+description = "Robocup Simulation 2d Game analyzer"
+authors = ["goncamateus <mgm4@cin.ufpe.br>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "3.8"
+pip = "20.0.2"
+pyqt5 = "5.14.1"
+pandas = "1.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "5.3.5"
+pytest-qt = "3.3.0"
+pytest-cov = "2.8.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
