@@ -1,24 +1,9 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtCore import QPoint
-from PyQt5.QtCore import QEvent
-from PyQt5.QtGui import QBrush
-from PyQt5.QtGui import QIcon
-from PyQt5.QtGui import QPainter
-from PyQt5.QtGui import QPen
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QCheckBox
-from PyQt5.QtWidgets import QComboBox
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtWidgets import QDialogButtonBox
-from PyQt5.QtWidgets import QGroupBox
-from PyQt5.QtWidgets import QHBoxLayout
-from PyQt5.QtWidgets import QLabel
-from PyQt5.QtWidgets import QLineEdit
-from PyQt5.QtWidgets import QSlider
-from PyQt5.QtWidgets import QStyleOptionSlider
-from PyQt5.QtWidgets import QToolTip
-from PyQt5.QtWidgets import QVBoxLayout
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtCore import QEvent, QPoint, Qt
+from PyQt5.QtGui import QBrush, QIcon, QPainter, QPen
+from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDialog,
+                             QDialogButtonBox, QGroupBox, QHBoxLayout, QLabel,
+                             QLineEdit, QSlider, QStyleOptionSlider, QToolTip,
+                             QVBoxLayout, QWidget)
 
 
 class TipSlider(QSlider):
@@ -42,15 +27,6 @@ class TipSlider(QSlider):
         pos_global = self.mapToGlobal(pos_local)
         QToolTip.showText(pos_global, str(self.value()), self)
 
-    def keyPressEvent(self, event):
-        if event.key() in [Qt.Key_Left, Qt.Key_Right]:
-            if event.key() == Qt.Key_Left and self.value() > self.minimum():
-                self.setValue(self.value() - 1)
-            elif event.key() == Qt.Key_Right and self.value() < self.maximum():
-                self.setValue(self.value() + 1)
-        else:
-            super().keyPressEvent(event)
-
 
 class Field(QGroupBox):
     def __init__(self):
@@ -58,13 +34,13 @@ class Field(QGroupBox):
         self.create_slider()
 
     def create_slider(self):
-        sld = TipSlider(Qt.Horizontal, self)
-        sld.setFocusPolicy(Qt.NoFocus)
-        sld.setRange(1, 6000)
-        sld.setValue(1)
-        sld.setGeometry(325, 20, 1300, 20)
-        sld.setTickInterval(100)
-        sld.setTickPosition(QSlider.TicksBelow)
+        self.sld = TipSlider(Qt.Horizontal, self)
+        self.sld.setFocusPolicy(Qt.StrongFocus)
+        self.sld.setRange(1, 6000)
+        self.sld.setValue(1)
+        self.sld.setGeometry(325, 20, 1300, 20)
+        self.sld.setTickInterval(100)
+        self.sld.setTickPosition(QSlider.TicksBelow)
 
     def paintEvent(self, e):
         painter = QPainter(self)
@@ -97,6 +73,8 @@ class FMDBTab(QWidget):
         buttonbox.rejected.connect(self.cancel)
         self.mainLayout.addWidget(buttonbox)
         self.setLayout(self.mainLayout)
+        self.setFocusPolicy(Qt.StrongFocus)
+        self.setFocus(True)
 
     def save(self):
         pass
@@ -131,3 +109,11 @@ class FMDBTab(QWidget):
 
     def change_player(self, value):
         self.SELECTED_PLAYER = value
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Right:
+            self.field.sld.setValue(self.field.sld.value() + 1)
+        elif event.key() == Qt.Key_Left:
+            self.field.sld.setValue(self.field.sld.value() - 1)
+        else:
+            QWidget.keyPressEvent(self, event)
