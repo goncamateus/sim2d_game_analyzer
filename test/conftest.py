@@ -1,3 +1,4 @@
 import os
 
-os.environ['PYTHONPATH'] = '../'
+print('A')
+os.environ['PYTHONPATH'] = '../sim2d_game_analyzer'

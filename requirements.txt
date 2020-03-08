@@ -39,7 +39,6 @@ pytest-qt==3.3.0
 python-dateutil==2.8.1
 pytz==2019.3
 PyYAML==5.3
--e git+git@github.com:goncamateus/sim2d_game_analyzer.git@645196f25fddab35c26551fea3c47ebb5f1c02bf#egg=sim2d_game_analyzer
 six==1.14.0
 toml==0.10.0
 traitlets==4.3.3
