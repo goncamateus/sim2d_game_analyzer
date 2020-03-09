@@ -18,8 +18,9 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         QMainWindow.__init__(self)
+        self.setGeometry(self.screen().geometry())
         self.setWindowTitle(self.title)
-        self.setWindowIcon(QIcon("figures/icon.png"))
+        self.setWindowIcon(QIcon("sim2d_game_analyzer/figures/icon.png"))
         vbox = QVBoxLayout()
         tabWidget = QTabWidget()
 
@@ -27,16 +28,12 @@ class MainWindow(QMainWindow):
         self.fmdb_tab = FMDBTab()
         tabWidget.addTab(self.fmdb_tab, FMDBTab.NAME)
         vbox.addWidget(tabWidget)
-
-        self.adjustSize()
         wid = QWidget(self)
         self.setCentralWidget(wid)
         wid.setLayout(vbox)
-        self.setGeometry(self.screen().geometry())
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    tabdialog = MainWindow()
-    tabdialog.showFullScreen()
+    mainwindow = MainWindow()
     sys.exit(app.exec())
