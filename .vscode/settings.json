@@ -62,5 +62,6 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "*.ipp": "cpp"
-    }
+    },
+    "editor.rulers": [80]
 }
