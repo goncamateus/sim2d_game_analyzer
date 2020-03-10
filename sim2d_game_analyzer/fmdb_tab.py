@@ -59,6 +59,9 @@ class Field(QGroupBox):
         self.players_r = [None for _ in range(11)]
         self.setMouseTracking(True)
 
+    def reset_player_at_time(self):
+        self.saved_points[self.time][self.selected_player - 1] = list()
+
     def reset(self):
         self.dbs = [None for _ in range(11)]
         self.saved_points = {key: [list() for _ in range(11)]
@@ -276,6 +279,9 @@ class FMDBTab(QWidget):
         self.sld.setValue(1)
         self.field.reset()
 
+    def reset_player_at_time(self):
+        self.field.reset_player_at_time()
+
     def create_class_GB(self):
         my_list = ["Good", "Bad"]
         self.combo_classes = QComboBox()
@@ -331,6 +337,8 @@ class FMDBTab(QWidget):
             self.open()
         elif event.key() == Qt.Key_S:
             self.save()
+        elif event.key() == Qt.Key_R:
+            self.reset_player_at_time()
         else:
             QWidget.keyPressEvent(self, event)
         self.field.set_time(self.sld.value())
