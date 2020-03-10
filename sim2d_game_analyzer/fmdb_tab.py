@@ -47,8 +47,9 @@ class Field(QGroupBox):
         self.dbs = [None for _ in range(11)]
         self.selected_player = 1
         self.selected_class = "Good"
-        self.saved_points = {key: [list() for _ in range(11)]
-                             for key in range(1, 6001)}
+        self.saved_points = {kc: {key: [list() for _ in range(11)]
+                                  for key in range(1, 6001)} for kc in ['Good',
+                                                                        'Bad']}
         self.time = 1
         self.save_columns = []
         self.mx = 1
@@ -60,12 +61,14 @@ class Field(QGroupBox):
         self.setMouseTracking(True)
 
     def reset_player_at_time(self):
-        self.saved_points[self.time][self.selected_player - 1] = list()
+        self.saved_points[self.selected_class][
+            self.time][self.selected_player - 1] = list()
 
     def reset(self):
         self.dbs = [None for _ in range(11)]
-        self.saved_points = {key: [list() for _ in range(11)]
-                             for key in range(1, 6001)}
+        self.saved_points = {kc: {key: [list() for _ in range(11)]
+                                  for key in range(1, 6001)} for kc in ['Good',
+                                                                        'Bad']}
 
     def set_time(self, time):
         self.time = time
@@ -125,8 +128,8 @@ class Field(QGroupBox):
             self.save_columns = [x for x in at_time.keys() if x != 'show_time']
             self.save_columns.append('class')
             self.dbs[self.selected_player - 1] = db
-            self.saved_points[self.time][self.selected_player -
-                                         1].append((self.cx, self.cy))
+            self.saved_points[self.selected_class][
+                self.time][self.selected_player - 1].append((self.cx, self.cy))
             self.update()
 
     def paintEvent(self, e):
@@ -140,13 +143,19 @@ class Field(QGroupBox):
         if self.base_data is not None:
             self.draw_players(painter)
             self.draw_ball(painter)
-        if len(self.saved_points[self.time][self.selected_player - 1]) > 0:
-            self.draw_saved_points(painter)
+        # if len(self.saved_points['Good'][
+        #         self.time][self.selected_player - 1]) > 0:
+        self.draw_saved_points(painter)
 
     def draw_saved_points(self, painter):
         painter.setPen(QPen(Qt.white, 5, Qt.SolidLine))
         painter.setBrush(QBrush(Qt.green, Qt.SolidPattern))
-        for point_x, point_y in self.saved_points[self.time][
+        for point_x, point_y in self.saved_points['Good'][self.time][
+                self.selected_player - 1]:
+            painter.drawPoint(
+                point_x*12 + self.fmid[0], point_y*12 + self.fmid[1])
+        painter.setPen(QPen(Qt.red, 5, Qt.SolidLine))
+        for point_x, point_y in self.saved_points['Bad'][self.time][
                 self.selected_player - 1]:
             painter.drawPoint(
                 point_x*12 + self.fmid[0], point_y*12 + self.fmid[1])
