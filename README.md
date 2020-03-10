@@ -6,7 +6,7 @@ Games analyzer for Robocup Simulation 2d.
 
 ## Running
 ```
-$python game_analyzer.py
+$python run.py
 ```
 Choose your CSV file to analyze.
 
