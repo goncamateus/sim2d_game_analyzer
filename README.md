@@ -12,3 +12,12 @@ Choose your CSV file to analyze.
 
 ## Features
 - Classify good and bad points for each agent
+
+## KeyBinds
+- keys 1 to - choose [1,2,3,4,5,6,7,8,9,10,11] unum players
+- key G and B switch between Good and Bad points
+- key R resets the set of points at a given time
+- key O opens csv file
+- key S save csv file
+- key escape resets everything but the file choosed
+- key left and right chooses the time of the game
